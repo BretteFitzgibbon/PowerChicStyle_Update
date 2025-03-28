@@ -30,14 +30,14 @@ def get_stats(dict1, dict2, max_wears):
   # Minimum number of items from a category required to not wear the same item twice per two-month period (or other length of time chosen by the user). Ceil is a conservative measure of how many items the user needs. For example, if they technically need half an item, to say they need 1 item instead of 0 errs on the side of caution. 
   for key, value in dict1.items():
     if key == "None":
-      average = total_wears / len(dict2)
+      average = round(total_wears / len(dict2), 2)
       surplus = floor(-minimum_requirement) 
   # for key, value in dict2.items():
   #   if value == "None": 
   #     average = total_wears / len(dict1)
   #     surplus = 
     else:
-      average = round(total_wears / (len(dict1) + len(dict2)))
+      average = round(total_wears / (len(dict1) + len(dict2)), 2)
       surplus = floor(len(dict1) - minimum_requirement) # How many more items the user has versus what they need. A deficit would be displayed as a negative surplus. Floor function instead of rounding because fashion items are discrete, and floor is a more conservative measure than ceil (i.e., if you technically need half an item, having a -1 surplus instead of a 0 surplus -- that is, needing 1 item instead of 0 items -- is erring on the side of caution).
     all_items = len(dict1) + len(dict2)
     loss = len(dict2)
@@ -45,6 +45,8 @@ def get_stats(dict1, dict2, max_wears):
     proportional_surplus = round(surplus / minimum_requirement, 2) 
   # Setting floating-point number precision to 2 decimal places for readability
   # The surplus as a proportion of the minimum items required is a standardized approach that weighs, for example, having two pairs of gloves when you only need one differently from having 10 dresses when you only need nine, despite the surpluses in each example being the same number of items.
+    days_elapsed = num_of_days(date(2018, 1, 1), date.today())
+    frequency = round(days_elapsed/ total_wears, 2)
   print(get_items(dict1))
   for key, value in dict1.items():
     if value == "None":
@@ -60,7 +62,8 @@ def get_stats(dict1, dict2, max_wears):
   print("Average Wears: ", average)
   print("Minimum Requirement: ", minimum_requirement)
   print("Surplus: ", surplus)
-  print("Proportional Surplus: ", proportional_surplus, "\n")
+  print("Proportional Surplus: ", proportional_surplus)
+  print("Frequency: once every ", frequency, "days \n")
   print(simple_sort(dict1), "\n")
   return proportional_surplus
 
@@ -299,6 +302,9 @@ def main():
 
   # print("Coin Purses\n")
   # get_stats(coin_purses, coin_purses_not_available, max_wears)
+
+  print("Club Dresses\n")
+  get_stats(club_dresses, club_dresses_not_available, max_wears)
 
   # print("Evening Dresses\n")
   # get_stats(evening_dresses, evening_dresses_not_available, max_wears)
