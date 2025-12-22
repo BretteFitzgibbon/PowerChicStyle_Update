@@ -3,9 +3,13 @@ from datetime import date
 from math import ceil, floor
 from random import choice
 
+NONREPEAT_PERIOD = 62 # Goal of not wearing the same item more than once per two-month period, on average. User can set their nonrepeat period of choice.
+
 def num_of_days(date1, date2):
-    days_elapsed = (date2 - date1).days
-    return days_elapsed
+  days_elapsed = (date2 - date1).days
+  return days_elapsed
+  
+days_elapsed = num_of_days(date(2018, 1, 1), date.today()) # Enters the date user started tracking wears and today's date
 
 def get_items(dict): # Displays items from a given category that have been worn the least
   minimum = min(dict.values())
@@ -25,7 +29,6 @@ def get_stats(dict1, dict2, max_wears):
   vals2 = [v for _, v in dict2.items()]
 
   total_wears = sum(vals1) + sum(vals2)
-  #wear_days = ceil(days_elapsed / total_wears);
   minimum_requirement = ceil(total_wears / max_wears)
   # Minimum number of items from a category required to not wear the same item twice per two-month period (or other length of time chosen by the user). Ceil is a conservative measure of how many items the user needs. For example, if they technically need half an item, to say they need 1 item instead of 0 errs on the side of caution. 
   for key, value in dict1.items():
@@ -46,7 +49,10 @@ def get_stats(dict1, dict2, max_wears):
   # Setting floating-point number precision to 2 decimal places for readability
   # The surplus as a proportion of the minimum items required is a standardized approach that weighs, for example, having two pairs of gloves when you only need one differently from having 10 dresses when you only need nine, despite the surpluses in each example being the same number of items.
     days_elapsed = num_of_days(date(2018, 1, 1), date.today())
-    frequency = round(days_elapsed/ total_wears, 2)
+    frequency = round(days_elapsed / total_wears, 2)
+    years_until_new_buy = round ((frequency * ((NONREPEAT_PERIOD * total_wears - (len(dict1) + 1) * days_elapsed) / ((len(dict1) + 1) - NONREPEAT_PERIOD)) / 365), 2)
+    if years_until_new_buy < 0:
+      years_until_new_buy = float('inf')
   print(get_items(dict1))
   for key, value in dict1.items():
     if value == "None":
@@ -58,12 +64,12 @@ def get_stats(dict1, dict2, max_wears):
   print("Loss: ", loss)
   print("Loss Percentage:", loss_proportion)
   print("Total Wears: ", total_wears)
-  #print("Worn every ", wear_days, " days")
   print("Average Wears: ", average)
   print("Minimum Requirement: ", minimum_requirement)
   print("Surplus: ", surplus)
   print("Proportional Surplus: ", proportional_surplus)
-  print("Frequency: once every ", frequency, "days \n")
+  print("Frequency: once every ", frequency, "days")
+  print("Years Until New Buy: ", years_until_new_buy, "\n")
   print(simple_sort(dict1), "\n")
   return proportional_surplus
 
@@ -79,8 +85,6 @@ def what_to_buy(dict):
   print("What to Buy Next: ", sort)
 
 def main():
-  NONREPEAT_PERIOD = 62 # Goal of not wearing the same item more than once per two-month period, on average. User can set their nonrepeat period of choice.
-  days_elapsed = num_of_days(date(2018, 1, 1), date.today()) # Enters the date user started tracking wears and today's date
   print("Days Elapsed: ", days_elapsed)
   #print("Worn every ", ceil(days_elapsed / total_wears))
   print("Nonrepeat Period: ", NONREPEAT_PERIOD, " days")
@@ -183,11 +187,11 @@ def main():
   print("Pants\n")
   get_stats(pants, pants_not_available, max_wears)
 
-  print("Socks\n")
-  get_stats(socks, socks_not_available, max_wears)
+  # print("Socks\n")
+  # get_stats(socks, socks_not_available, max_wears)
 
-  print("Hosiery\n")
-  get_stats(hosiery, hosiery_not_available, max_wears)
+  # print("Hosiery\n")
+  # get_stats(hosiery, hosiery_not_available, max_wears)
 
   print("Jackets\n")
   get_stats(jackets, jackets_not_available, max_wears)
@@ -225,8 +229,8 @@ def main():
   print("Brooches\n")
   get_stats(brooches, brooches_not_available, max_wears)
 
-  print("Ties\n")
-  get_stats(ties, ties_not_available, max_wears)
+  # print("Ties\n")
+  # get_stats(ties, ties_not_available, max_wears)
 
   print("Spring Scarves\n")
   get_stats(spring_scarves, spring_scarves_not_available, max_wears)
@@ -234,8 +238,8 @@ def main():
   print("Winter Scarves\n")
   get_stats(winter_scarves, winter_scarves_not_available, max_wears)
 
-  print("Belts\n")
-  get_stats(belts, belts_not_available, max_wears)
+  # print("Belts\n")
+  # get_stats(belts, belts_not_available, max_wears)
 
   print("Bracelets\n")
   get_stats(bracelets, bracelets_not_available, max_wears)
@@ -255,8 +259,8 @@ def main():
   print("Headbands\n")
   get_stats(headbands, headbands_not_available, max_wears)
 
-  print("Utilitarian Headbands\n")
-  get_stats(utilitarian_headbands, utilitarian_headbands_not_available, max_wears)
+  # print("Utilitarian Headbands\n")
+  # get_stats(utilitarian_headbands, utilitarian_headbands_not_available, max_wears)
 
   print("Summer Hats\n")
   get_stats(summer_hats, summer_hats_not_available, max_wears)
@@ -264,17 +268,17 @@ def main():
   print("Winter Hats\n")
   get_stats(winter_hats, winter_hats_not_available, max_wears)
 
-  print("Glasses\n")
-  get_stats(glasses, glasses_not_available, max_wears)
+  # print("Glasses\n")
+  # get_stats(glasses, glasses_not_available, max_wears)
 
-  print("Eyeglasses\n")
-  get_stats(eyeglasses, eyeglasses_not_available, max_wears)
+  # print("Eyeglasses\n")
+  # get_stats(eyeglasses, eyeglasses_not_available, max_wears)
 
   print("Sunglasses\n")
   get_stats(sunglasses, sunglasses_not_available, max_wears)
 
-  print("Masks\n")
-  get_stats(masks, masks_not_available, max_wears)
+  # print("Masks\n")
+  # get_stats(masks, masks_not_available, max_wears)
 
   print("Gloves\n")
   get_stats(gloves, gloves_not_available, max_wears)
@@ -297,14 +301,14 @@ def main():
   print("Wallets\n")
   get_stats(wallets, wallets_not_available, max_wears)
 
-  print("Cosmetics Bags\n")
-  get_stats(cosmetics_bags, cosmetics_bags_not_available, max_wears)
+  # print("Cosmetics Bags\n")
+  # get_stats(cosmetics_bags, cosmetics_bags_not_available, max_wears)
 
-  # print("Coin Purses\n")
-  # get_stats(coin_purses, coin_purses_not_available, max_wears)
+  # # print("Coin Purses\n")
+  # # get_stats(coin_purses, coin_purses_not_available, max_wears)
 
-  print("Club Dresses\n")
-  get_stats(club_dresses, club_dresses_not_available, max_wears)
+  # print("Club Dresses\n")
+  # get_stats(club_dresses, club_dresses_not_available, max_wears)
 
   # print("Evening Dresses\n")
   # get_stats(evening_dresses, evening_dresses_not_available, max_wears)
@@ -330,11 +334,11 @@ def main():
   # print("Evening Bags\n")
   # get_stats(evening_bags, evening_bags_not_available, max_wears)
 
-  print("Workout Tops\n")
-  get_stats(workout_tops, workout_tops_not_available, max_wears)
+  # print("Workout Tops\n")
+  # get_stats(workout_tops, workout_tops_not_available, max_wears)
 
-  print("Workout Bottoms\n")
-  get_stats(workout_bottoms, workout_bottoms_not_available, max_wears)
+  # print("Workout Bottoms\n")
+  # get_stats(workout_bottoms, workout_bottoms_not_available, max_wears)
 
   # print("Swim Tops\n")
   # get_stats(swim_tops, swim_tops_not_available, max_wears)
