@@ -48,7 +48,6 @@ def get_stats(dict1, dict2, max_wears):
     proportional_surplus = round(surplus / minimum_requirement, 2) 
   # Setting floating-point number precision to 2 decimal places for readability
   # The surplus as a proportion of the minimum items required is a standardized approach that weighs, for example, having two pairs of gloves when you only need one differently from having 10 dresses when you only need nine, despite the surpluses in each example being the same number of items.
-    days_elapsed = num_of_days(date(2018, 1, 1), date.today())
     frequency = round(days_elapsed / total_wears, 2)
     if len(dict1) >= 61:
       years_until_new_buy = float('inf')
