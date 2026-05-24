@@ -93,7 +93,8 @@ def main():
   #print("Worn every ", ceil(days_elapsed / total_wears))
   print("Nonrepeat Period: ", NONREPEAT_PERIOD, " days")
   max_wears = ceil(days_elapsed / NONREPEAT_PERIOD) # Maximum number of times the same item could be worn during the entire period, if it was worn only an average of once per two-month period
-  print(max_wears)
+  print("Max Wears: ", max_wears)
+  print()
   #variable_of_interest = input("Rank by: ")
   # Storing the proportional surplus stat as its own variable outside get_stats allows the what_to_buy function to use it later
   # Including items that were worn, but are no longer available to be worn now (damaged, lost, etc.) is important for accuracy of the number of wears in a category and the number of new items needed (i.e., how many unavailable items need to be replaced)
@@ -167,258 +168,53 @@ def main():
   christmas_proportional_surplus = get_stats("Christmas", christmas, christmas_not_available, max_wears)
   new_years_proportional_surplus = get_stats("New Year's", new_years, new_years_not_available, max_wears)
 
-  # # Printing get_stats for each category, instead of combining them into one get_stats function that prints all the categories, in order to have a different string as the header for every category
-  # print("Dresses \n")
-  # get_stats(dresses, dresses_not_available, max_wears)
-
-  # print("Jumpsuits\n")
-  # get_stats(jumpsuits, jumpsuits_not_available, max_wears)
-
-  # print("Tops\n")
-  # get_stats(tops, tops_not_available, max_wears)
-
-  # print("Sweaters\n")
-  # get_stats(sweaters, sweaters_not_available, max_wears)
-
-  # print("Skirts\n")
-  # get_stats(skirts, skirts_not_available, max_wears)
-
-  # print("Shorts\n")
-  # get_stats(shorts, shorts_not_available, max_wears)
-
-  # print("Jeans\n")
-  # get_stats(jeans, jeans_not_available, max_wears)
-
-  # print("Pants\n")
-  # get_stats(pants, pants_not_available, max_wears)
-
-  # # print("Socks\n")
-  # # get_stats(socks, socks_not_available, max_wears)
-
-  # # print("Hosiery\n")
-  # # get_stats(hosiery, hosiery_not_available, max_wears)
-
-  # print("Jackets\n")
-  # get_stats(jackets, jackets_not_available, max_wears)
-
-  # print("Light Coats\n")
-  # get_stats(light_coats, light_coats_not_available, max_wears)
-
-  # print("Heavy Coats\n")
-  # get_stats(heavy_coats, heavy_coats_not_available, max_wears)
-
-  # print("Boots\n")
-  # get_stats(boots, boots_not_available, max_wears)
-
-  # print("Shoes\n")
-  # get_stats(shoes, shoes_not_available, max_wears)
-
-  # print("Ankle Boots\n")
-  # get_stats(ankle_boots, ankle_boots_not_available, max_wears)
-
-  # print("Heels\n")
-  # get_stats(heels, heels_not_available, max_wears)
-
-  # print("Flats\n")
-  # get_stats(flats, flats_not_available, max_wears)
-
-  # print("Sandals\n")
-  # get_stats(sandals, sandals_not_available, max_wears)
-
-  # print("Sneakers\n")
-  # get_stats(sneakers, sneakers_not_available, max_wears)
-
-  # print("Earrings\n")
-  # get_stats(earrings, earrings_not_available, max_wears)
-
-  # print("Necklaces\n")
-  # get_stats(necklaces, necklaces_not_available, max_wears)
-
-  # print("Brooches\n")
-  # get_stats(brooches, brooches_not_available, max_wears)
-
-  # # print("Ties\n")
-  # # get_stats(ties, ties_not_available, max_wears)
-
-  # print("Spring Scarves\n")
-  # get_stats(spring_scarves, spring_scarves_not_available, max_wears)
-
-  # print("Winter Scarves\n")
-  # get_stats(winter_scarves, winter_scarves_not_available, max_wears)
-
-  # # print("Belts\n")
-  # # get_stats(belts, belts_not_available, max_wears)
-
-  # print("Bracelets\n")
-  # get_stats(bracelets, bracelets_not_available, max_wears)
-
-  # print("Watches\n")
-  # get_stats(watches, watches_not_available, max_wears)
-
-  # print("Rings\n")
-  # get_stats(rings, rings_not_available, max_wears)
-
-  # print("Ponytail\n")
-  # get_stats(ponytail, ponytail_not_available, max_wears)
-
-  # print("Clips\n")
-  # get_stats(clips, clips_not_available, max_wears)
-
-  # print("Headbands\n")
-  # get_stats(headbands, headbands_not_available, max_wears)
-
-  # # print("Utilitarian Headbands\n")
-  # # get_stats(utilitarian_headbands, utilitarian_headbands_not_available, max_wears)
-
-  # print("Summer Hats\n")
-  # get_stats(summer_hats, summer_hats_not_available, max_wears)
-
-  # print("Winter Hats\n")
-  # get_stats(winter_hats, winter_hats_not_available, max_wears)
-
-  # # print("Glasses\n")
-  # # get_stats(glasses, glasses_not_available, max_wears)
-
-  # # print("Eyeglasses\n")
-  # # get_stats(eyeglasses, eyeglasses_not_available, max_wears)
-
-  # print("Sunglasses\n")
-  # get_stats(sunglasses, sunglasses_not_available, max_wears)
-
-  # # print("Masks\n")
-  # # get_stats(masks, masks_not_available, max_wears)
-
-  # print("Gloves\n")
-  # get_stats(gloves, gloves_not_available, max_wears)
-
-  # print("Umbrellas\n")
-  # get_stats(umbrellas, umbrellas_not_available, max_wears)
-
-  # print("Phone Cases\n")
-  # get_stats(phone_cases, phone_cases_not_available, max_wears)
-
-  # print("Handbags\n")
-  # get_stats(handbags, handbags_not_available, max_wears)
-
-  # print("Totes\n")
-  # get_stats(totes, totes_not_available, max_wears)
-
-  # print("Shopping Totes\n")
-  # get_stats(shopping_totes, shopping_totes_not_available, max_wears)
-
-  # print("Wallets\n")
-  # get_stats(wallets, wallets_not_available, max_wears)
-
-  # # print("Cosmetics Bags\n")
-  # # get_stats(cosmetics_bags, cosmetics_bags_not_available, max_wears)
-
-  # # # print("Coin Purses\n")
-  # # # get_stats(coin_purses, coin_purses_not_available, max_wears)
-
-  # # print("Club Dresses\n")
-  # # get_stats(club_dresses, club_dresses_not_available, max_wears)
-
-  # # print("Evening Dresses\n")
-  # # get_stats(evening_dresses, evening_dresses_not_available, max_wears)
-
-  # # print("Evening Jumpsuits\n")
-  # # get_stats(evening_jumpsuits, evening_jumpsuits_not_available, max_wears)
-
-  # # print("Evening Tops\n")
-  # # get_stats(evening_tops, evening_tops_not_available, max_wears)
-
-  # # print("Evening Skirts\n")
-  # # get_stats(evening_skirts, evening_skirts_not_available, max_wears)
-
-  # # print("Evening Jackets\n")
-  # # get_stats(evening_jackets, evening_jackets_not_available, max_wears)
-
-  # # print("Evening Shoes\n")
-  # # get_stats(evening_shoes, evening_shoes_not_available, max_wears)
-
-  # # print("Evening Accessories\n")
-  # # get_stats(evening_accessories, evening_accessories_not_available, max_wears)
-
-  # # print("Evening Bags\n")
-  # # get_stats(evening_bags, evening_bags_not_available, max_wears)
-
-  # # print("Workout Tops\n")
-  # # get_stats(workout_tops, workout_tops_not_available, max_wears)
-
-  # # print("Workout Bottoms\n")
-  # # get_stats(workout_bottoms, workout_bottoms_not_available, max_wears)
-
-  # # print("Swim Tops\n")
-  # # get_stats(swim_tops, swim_tops_not_available, max_wears)
-
-  # # print("Swim Bottoms\n")
-  # # get_stats(swim_bottoms, swim_bottoms_not_available, max_wears)
-
-  # # print("Beach Shoes\n")
-  # # get_stats(beach_shoes, beach_shoes_not_available, max_wears)
-
-  # # print("Festival\n")
-  # # get_stats(festival, festival_not_available, max_wears)
-
-  # # print("St. Patrick's Day\n")
-  # # get_stats(st_patricks_day, st_patricks_day_not_available, max_wears)
-
-  # # print("Easter\n")
-  # # get_stats(easter, easter_not_available, max_wears)
-
-  # # print("Halloween\n")
-  # # get_stats(halloween, halloween_not_available, max_wears)
-
-  # # print("Christmas\n")
-  # # get_stats(christmas, christmas_not_available, max_wears)
-
-  #print("Outfit 1\n")
-  #outfit_generator(max_wears, dresses, jackets, heels, earrings, necklaces, bracelets, watches, rings, hair_brooches, sunglasses, masks, totes)
-  #print("\n") # Creates space between sample outfits for readability
-
-  #print("Outfit 2\n")
-  #outfit_generator(max_wears, tops, skirts, light_coats, flats, earrings, spring_scarves, sunglasses, masks, totes)
-  #print("\n")
-
-  #print("Outfit 3\n")
-  #outfit_generator(max_wears, sweaters, pants, heavy_coats, boots, earrings, winter_scarves, winter_hats, sunglasses, masks, gloves, umbrellas, totes)
-  #print("\n")
-
-  #print("Outfit 4\n")
-  #outfit_generator(max_wears, tops, jeans, heavy_coats, sneakers, earrings, ponies, sunglasses, masks, handbags, coin_purses)
-  #print("\n")
-
-  #print("Outfit 5\n")
-  #outfit_generator(max_wears, jumpsuits, ankle_boots, earrings, brooches, eyeglasses, masks, handbags)
-  #print("\n")
-
-  #print("Outfit 6\n")
-  #outfit_generator(max_wears, dresses, hosiery, flats, earrings, belts, headbands, glasses, sunglasses, masks, handbags)
-  #print("\n")
-
-  #print("Outfit 7\n")
-  #outfit_generator(max_wears, tops, pants, flats, earrings, ties, sunglasses, masks, totes)
-  #print("\n")
-
-  #print("Outfit 8\n")
-  #outfit_generator(max_wears, swim_tops, swim_bottoms, beach_shoes, summer_hats, sunglasses, shopping_totes)
-  #print("\n")
-
-  #print("Outfit 9\n")
-  #outfit_generator(max_wears, dresses, sandals, earrings, sunglasses, masks, handbags)
-  #print("\n")
-
-  #print("Outfit 10\n")
-  #outfit_generator(max_wears, evening_dresses, evening_jackets, evening_shoes, evening_accessories, evening_bags)
-  #print("\n")
-
-  #print("Outfit 11\n")
-  #outfit_generator(max_wears, evening_tops, evening_skirts, evening_shoes, evening_bags)
-  #print("\n")
-
-  #print("Outfit 12\n")
-  #outfit_generator(max_wears, evening_jumpsuits, evening_shoes, evening_bags)
-  #print("\n")
+  print("Outfit 1\n")
+  outfit_generator(max_wears, dresses, jackets, heels, earrings, necklaces, bracelets, watches, rings, ponytail, sunglasses, masks, totes)
+  print("\n") # Creates space between sample outfits for readability
+
+  print("Outfit 2\n")
+  outfit_generator(max_wears, tops, skirts, light_coats, flats, earrings, spring_scarves, sunglasses, masks, totes)
+  print("\n")
+
+  print("Outfit 3\n")
+  outfit_generator(max_wears, sweaters, pants, heavy_coats, boots, earrings, winter_scarves, winter_hats, sunglasses, masks, gloves, umbrellas, totes)
+  print("\n")
+
+  print("Outfit 4\n")
+  outfit_generator(max_wears, tops, jeans, heavy_coats, sneakers, earrings, ponytail, sunglasses, masks, handbags, coin_purses)
+  print("\n")
+
+  print("Outfit 5\n")
+  outfit_generator(max_wears, jumpsuits, ankle_boots, earrings, brooches, eyeglasses, masks, handbags)
+  print("\n")
+
+  print("Outfit 6\n")
+  outfit_generator(max_wears, dresses, hosiery, flats, earrings, belts, headbands, glasses, sunglasses, masks, handbags)
+  print("\n")
+
+  print("Outfit 7\n")
+  outfit_generator(max_wears, tops, pants, flats, earrings, ties, sunglasses, masks, totes)
+  print("\n")
+
+  print("Outfit 8\n")
+  outfit_generator(max_wears, swim_tops, swim_bottoms, beach_shoes, summer_hats, sunglasses, shopping_totes)
+  print("\n")
+
+  print("Outfit 9\n")
+  outfit_generator(max_wears, dresses, sandals, earrings, sunglasses, masks, handbags)
+  print("\n")
+
+  print("Outfit 10\n")
+  outfit_generator(max_wears, evening_dresses, evening_jackets, evening_shoes, evening_accessories, evening_bags)
+  print("\n")
+
+  print("Outfit 11\n")
+  outfit_generator(max_wears, evening_tops, evening_skirts, evening_shoes, evening_bags)
+  print("\n")
+
+  print("Outfit 12\n")
+  outfit_generator(max_wears, evening_jumpsuits, evening_shoes, evening_bags)
+  print("\n")
 
   categories = {"dresses": dress_proportional_surplus, "jumpsuits": jumpsuit_proportional_surplus, "tops": top_proportional_surplus, "sweaters": sweater_proportional_surplus, "skirts": skirt_proportional_surplus, "shorts": shorts_proportional_surplus, "jeans": jeans_proportional_surplus, "pants": pants_proportional_surplus, "socks": socks_proportional_surplus, "hosiery": hosiery_proportional_surplus, "jackets": jacket_proportional_surplus, "light coats": light_coat_proportional_surplus, "heavy coats": heavy_coat_proportional_surplus, "shoes": shoes_proportional_surplus, "ankle boots": ankle_boots_proportional_surplus, "heels": heels_proportional_surplus, "boots": boots_proportional_surplus, "flats": flats_proportional_surplus, "sandals": sandals_proportional_surplus, "sneakers": sneakers_proportional_surplus, "earrings": earrings_proportional_surplus, "necklaces": necklaces_proportional_surplus, "brooches": brooches_proportional_surplus, "ties": ties_proportional_surplus, "spring scarves": spring_scarves_proportional_surplus, "winter scarves": winter_scarves_proportional_surplus, "belts": belts_proportional_surplus, "bracelets": bracelets_proportional_surplus, "watches": watches_proportional_surplus, "rings": rings_proportional_surplus, "ponytail": ponytail_proportional_surplus, "clips": clips_proportional_surplus, "headbands": headbands_proportional_surplus, "utilitarian headbands": utilitarian_headbands_proportional_surplus, "summer hats": summer_hats_proportional_surplus, "winter hats": winter_hats_proportional_surplus, "glasses": glasses_proportional_surplus, "eyeglasses": eyeglasses_proportional_surplus, "sunglasses": sunglasses_proportional_surplus, "masks": masks_proportional_surplus, "gloves": gloves_proportional_surplus, "umbrellas": umbrellas_proportional_surplus, "phone cases": phone_cases_proportional_surplus, "handbags": handbags_proportional_surplus, "totes": totes_proportional_surplus, "shopping totes": shopping_totes_proportional_surplus, "wallets": wallets_proportional_surplus, "cosmetics bags": cosmetics_bags_proportional_surplus, "coin purses": coin_purses_proportional_surplus, "club dresses": club_dresses_proportional_surplus, "evening dresses": evening_dresses_proportional_surplus, "evening jumpsuits": evening_jumpsuits_proportional_surplus, "evening tops": evening_tops_proportional_surplus, "evening skirts": evening_skirts_proportional_surplus, "evening jackets": evening_jackets_proportional_surplus, "evening shoes": evening_shoes_proportional_surplus, "evening accessories": evening_accessories_proportional_surplus, "evening bags": evening_bags_proportional_surplus, "workout tops": workout_tops_proportional_surplus, "workout bottoms": workout_bottoms_proportional_surplus, "swim tops": swim_tops_proportional_surplus, "swim bottoms": swim_bottoms_proportional_surplus, "beach shoes": beach_shoes_proportional_surplus, "festival": festival_proportional_surplus, "St. Patrick's Day": st_patricks_day_proportional_surplus, "Easter": easter_proportional_surplus, "Halloween": halloween_proportional_surplus, "Christmas": christmas_proportional_surplus, "New Year's": new_years_proportional_surplus}
 
